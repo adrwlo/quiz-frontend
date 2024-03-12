@@ -1,0 +1,60 @@
+.card {
+    width: 60%;
+
+    ul {
+        li {
+            text-align: justify;
+        }
+    }
+    
+    .technologies {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 25px;
+        
+        .img_tech {
+            width: 100px;
+            height: auto;
+        }
+    }
+}
+
+.img_home {
+    width: 40%;
+}
+
+@media screen and (max-width: 1500px) {
+    .card {
+        width: 100%;
+       
+        .technologies {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 25px;
+            
+            .img_tech {
+                width: 100px;
+                height: auto;
+            }
+        }
+    }
+    
+    .img_home {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .card {
+        .technologies {
+            flex-wrap: wrap;
+            .img_tech {
+                width: 60px;
+            }
+        }
+    }
+}
