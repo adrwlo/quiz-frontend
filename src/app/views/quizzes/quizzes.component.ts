@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { QuizzesService } from './quizzes.service';
 import { Router } from '@angular/router';
+import { QuizData } from '../../models/QuizData';
+import { QuizService } from '../../services/quiz.service';
 
 @Component({
   selector: 'app-quizzes',
@@ -10,15 +12,24 @@ import { Router } from '@angular/router';
   templateUrl: './quizzes.component.html',
   styleUrl: './quizzes.component.scss'
 })
-export class QuizzesComponent {
+export class QuizzesComponent implements OnInit {
+  quizzes: QuizData[] = [];
+
   constructor(
-    public quizzesService: QuizzesService,
+    private quizzesService: QuizzesService,
+    private quizService: QuizService,
     private router: Router,
   ) {}
 
-  startQuiz(id: number) {
+  ngOnInit(): void {
+    this.quizService.getQuizzes().subscribe((data: QuizData[]) => {
+      this.quizzes = data;
+    })
+  }
+
+  startQuiz(id: number): void {
+    this.quizzesService.quizId = id;
     this.quizzesService.step = 0;
-    this.quizzesService.getChosenQuiz(id);
-    this.router.navigate([`quizzes/${id}/${this.quizzesService.step + 1}`]);
+    this.router.navigate([`quizzes/${this.quizzesService.quizId }/${this.quizzesService.step + 1}`]);
   }
 }
