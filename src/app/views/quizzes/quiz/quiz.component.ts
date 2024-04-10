@@ -20,6 +20,6 @@ export class QuizComponent {
   }
 
   ngOnInit() {
-    this.quizzesService.getQuizzes();
+    //this.quizzesService.getQuizzes();
   }
 }
