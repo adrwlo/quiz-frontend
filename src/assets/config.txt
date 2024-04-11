@@ -4,25 +4,25 @@
 ==1938
 ==>1939
 ==1940
+==1942
 =Which equations equals 4?
 ==>2+2
-==2%2
-==>2*2
-==>2^2
+==7%2
+==2*2*3
+==2+2+2
 =Which equations equals 5?
 ==>3+2
-==1^5
 ==5%2
-==>5*1
+==5*1*2
 ==5-1
 =When I World War started?
 ==1938
 ==>1918
+==1920
+==1921
 =How long is decade?
 ==5 years
 ==>10 years
 ==15 years
 ==20 years
-==25 years
-==30 years
-==50 years
+
