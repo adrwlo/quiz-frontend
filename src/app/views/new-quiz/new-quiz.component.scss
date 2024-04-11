@@ -1,6 +1,13 @@
 .nav-tabs {
     justify-content: flex-end;
     margin-top: 25px;
-    margin-right: 50px; 
-    margin-left: 50px;
+    border-bottom: none;
+
+    .nav-link {
+        color: #495057;
+    }
+
+    .nav-link-active {
+        color: black;
+    }
 }
