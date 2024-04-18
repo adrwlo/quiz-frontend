@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col">
           <div class="card">
-            <h2 class="card-header">Add quiz by upload file txt</h2>
+            <h2 class="card-header">Add quiz by uploading file txt</h2>
             <div class="card-body w-100">
               <div class="row">
                 <div class="col">
@@ -30,19 +30,32 @@
                     <span>11 ==4-3*2</span>
                   </div>
                   <div class="download-template-quiz">
-                    <button>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="white" class="bi bi-file-earmark-arrow-down-fill" viewBox="0 0 16 16">
+                    <button (click)="downloadExampleQuizTxt()">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-file-earmark-arrow-down-fill" viewBox="0 0 16 16">
                         <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1m-1 4v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 11.293V7.5a.5.5 0 0 1 1 0"/>
                       </svg>
                     </button>
                   </div>
                 </div>
               </div>
-              <p class="text-danger mt-3">There were problems with the uploaded file!</p>
-              <button type="button" class="btn btn-success" style="width: 100px;" [disabled]="isDisabled">Send</button> 
+              <p *ngIf="showMessageInfo" class="message mt-3" [class.text-success]="messageInfo.messageType === 'success'" [class.text-danger]="messageInfo.messageType === 'danger'">
+                {{ messageInfo.message }}
+              </p>
+              <div class="mt-2" *ngIf="showMessageInfo && messageInfo.messageType === 'success'">
+                <span class="d-flex gap-2">
+                  <p class="fw-bold m-0">Title of quiz:</p>
+                  <p class="fw-lighter fst-italic m-0 m-0">{{quizTitles[0]}}</p>
+                </span>
+                <span class="d-flex gap-2">
+                  <p class="fw-bold m-0">Amount questions:</p>
+                  <p class="fw-lighter fst-italic m-0">{{quizQuestions.length}}</p>
+                </span>
+              </div>
+              <button type="button" class="btn btn-success mt-4" style="width: 100px;" [disabled]="isDisabled" (click)="saveQuizData()">Save</button> 
             </div>
           </div>
         </div>
     </div>
-</div>
-
+  </div>
+  
+<app-toast></app-toast>
