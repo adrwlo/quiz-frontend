@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { QuizData } from '../models/QuizData';
+import { Rating } from '../models/Rating';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,9 @@ export class QuizService {
 
   deleteQuiz(title: string): Observable<any> {
     return this.http.delete(`${this.baseUrl}/api/deleteQuiz/${title}`);
+  }
+
+  getRatings(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/api/getRatings`);
   }
 }

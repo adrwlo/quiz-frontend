@@ -2,7 +2,7 @@
     <h1 class="mb-3">Scores</h1>
     <div class="row mb-4">
         <div class="col-md-3">
-            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+            <input (input)="filter($event)" class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
         </div>
         <div class="col-md-3">
             <select class="form-select" aria-label="Default select example">
@@ -16,7 +16,7 @@
     <table class="table table-hover">
         <thead>
           <tr class="table-active">
-            <th scope="col">Posistion</th>
+            <th scope="col">Position</th>
             <th scope="col">Quiz title</th>
             <th scope="col">Amount of questions</th>
             <th scope="col">Amount of correct questions</th>
@@ -24,26 +24,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>General knowledge</td>
-            <td>20</td>
-            <td>18</td>
-            <td>18.04.2024 9:30</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Mathematics</td>
-            <td>15</td>
-            <td>14</td>
-            <td>12.04.2024 19:30</td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>General knowledge</td>
-            <td>20</td>
-            <td>15</td>
-            <td>08.03.2024 12:00</td>
+          <tr *ngFor="let rating of filteredRatings; let i = index">
+            <th scope="row">{{i + 1}}</th>
+            <td>{{rating.quizTitle}}</td>
+            <td>{{rating.maxPoints}}</td>
+            <td>{{rating.rating}}</td>
+            <td>{{rating.dateTime}}</td>
           </tr>
         </tbody>
       </table>
