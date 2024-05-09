@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="col" *ngFor="let quiz of this.quizzes">
+        <div class="col" *ngFor="let quiz of this.quizzesService.quizzes">
           <div class="card">
             <h2 class="card-header">{{ quiz.title }}</h2>
             <div class="card-body w-100">
@@ -16,7 +16,7 @@
                     Shuffle answers
                 </label>
               </div>
-              <button type="button" class="btn btn-success mt-3" style="width: 100px;" (click)="startQuiz(quiz.id!)">Start</button>
+              <button type="button" class="btn btn-success mt-3" style="width: 100px;" (click)="this.quizzesService.startQuiz(quiz.id!)">Start</button>
             </div>
           </div>
         </div>

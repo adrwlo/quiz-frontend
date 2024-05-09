@@ -2,28 +2,30 @@
     <div class="row row-cols-1 row-cols-md-2 g-4">
         <div class="col w-100">
             <div class="card">
-                <h2 class="card-header">{{ this.chosenQuiz.title }}</h2>
+                <h2 class="card-header">{{ this.quizzesService.chosenQuiz.title }}</h2>
                 <div class="card-body w-100 p-4">
-                    <h5 class="card-subtitle text-muted mb-3">{{ this.step }}. {{ this.chosenQuiz.quizQuestionDTOs[this.step - 1].question }}</h5>
+                    <h5 class="card-subtitle text-muted mb-3">{{ this.quizzesService.step }}. {{ this.quizzesService.chosenQuiz.quizQuestionDTOs[this.quizzesService.step - 1].question }}</h5>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="answer" id="answerA" [value]="'A'"> 
-                        <label class="form-check-label" for="answerA">{{ this.chosenQuiz.quizQuestionDTOs[this.step - 1].answerA.answer }}</label>
+                        <input class="form-check-input" type="radio" name="answer" id="answerA" [value]="'A'" [checked]="this.quizzesService.chosenQuiz.quizQuestionDTOs[this.quizzesService.step - 1].selectedAnswer === 'A'" (change)="this.quizzesService.chosenQuiz.quizQuestionDTOs[this.quizzesService.step - 1].selectedAnswer = 'A'">
+                        <label class="form-check-label" for="answerA">{{ this.quizzesService.chosenQuiz.quizQuestionDTOs[this.quizzesService.step - 1].answerA.answer }}</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="answer" id="answerB" [value]="'B'">
-                        <label class="form-check-label" for="answerB">{{ this.chosenQuiz.quizQuestionDTOs[this.step - 1].answerB.answer }}</label>
+                        <input class="form-check-input" type="radio" name="answer" id="answerB" [value]="'B'" [checked]="this.quizzesService.chosenQuiz.quizQuestionDTOs[this.quizzesService.step - 1].selectedAnswer === 'B'" (change)="this.quizzesService.chosenQuiz.quizQuestionDTOs[this.quizzesService.step - 1].selectedAnswer = 'B'">
+                        <label class="form-check-label" for="answerB">{{ this.quizzesService.chosenQuiz.quizQuestionDTOs[this.quizzesService.step - 1].answerB.answer }}</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="answer" id="answerC" [value]="'C'">
-                        <label class="form-check-label" for="answerC">{{ this.chosenQuiz.quizQuestionDTOs[this.step - 1].answerC.answer }}</label>
+                        <input class="form-check-input" type="radio" name="answer" id="answerC" [value]="'C'" [checked]="this.quizzesService.chosenQuiz.quizQuestionDTOs[this.quizzesService.step - 1].selectedAnswer === 'C'" (change)="this.quizzesService.chosenQuiz.quizQuestionDTOs[this.quizzesService.step - 1].selectedAnswer = 'C'">
+                        <label class="form-check-label" for="answerC">{{ this.quizzesService.chosenQuiz.quizQuestionDTOs[this.quizzesService.step - 1].answerC.answer }}</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="answer" id="answerD" [value]="'D'">
-                        <label class="form-check-label" for="answerD">{{ this.chosenQuiz.quizQuestionDTOs[this.step - 1].answerD.answer }}</label>
+                        <input class="form-check-input" type="radio" name="answer" id="answerD" [value]="'D'" [checked]="this.quizzesService.chosenQuiz.quizQuestionDTOs[this.quizzesService.step - 1].selectedAnswer === 'D'" (change)="this.quizzesService.chosenQuiz.quizQuestionDTOs[this.quizzesService.step - 1].selectedAnswer = 'D'">
+                        <label class="form-check-label" for="answerD">{{ this.quizzesService.chosenQuiz.quizQuestionDTOs[this.quizzesService.step - 1].answerD.answer }}</label>
                     </div>
+                    <p *ngIf="this.quizzesService.answerWarning" class="message mt-2 mb-2 text-danger">You need to answer on this question!</p>
                     <div style="display: flex; gap: 5px;">
-                        <button type="button" class="btn btn-secondary mt-3" style="width: 100px;" (click)="this.quizzesService.previous()">Previous</button>
-                        <button type="button" class="btn btn-primary mt-3" style="width: 100px;" (click)="this.quizzesService.next()">Next</button>
+                        <button type="button" class="btn btn-secondary mt-3" style="width: 100px;" [disabled]="this.quizzesService.step === 1 ? true : false" (click)="this.quizzesService.previous()">Previous</button>
+                        <button *ngIf="!(this.quizzesService.step === this.quizzesService.chosenQuiz.quizQuestionDTOs.length)" type="button" class="btn btn-primary mt-3" style="width: 100px;" (click)="this.quizzesService.next()">Next</button>
+                        <button *ngIf="this.quizzesService.step === this.quizzesService.chosenQuiz.quizQuestionDTOs.length" type="button" class="btn btn-success mt-3" style="width: 100px;" (click)="this.quizzesService.submit()">Submit</button>
                     </div>
                 </div>
             </div>
@@ -31,5 +33,4 @@
     </div>
 </div>
 
-
-
+<button (click)="chosenTest()">test chosen</button>

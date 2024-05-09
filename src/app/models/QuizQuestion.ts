@@ -6,4 +6,5 @@ export interface QuizQuestion {
     answerB: AnswerOption;
     answerC: AnswerOption;
     answerD: AnswerOption;
+    selectedAnswer: string
 }

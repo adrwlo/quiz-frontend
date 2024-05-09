@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { QuizzesService } from '../quizzes.service';
-import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { QuizFormComponent } from './quiz-form/quiz-form.component';
 import { QuizInfoComponent } from './quiz-info/quiz-info.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quiz',
@@ -12,14 +12,6 @@ import { QuizInfoComponent } from './quiz-info/quiz-info.component';
   templateUrl: './quiz.component.html',
   styleUrl: './quiz.component.scss'
 })
-export class QuizComponent {
-  constructor(
-    public quizzesService: QuizzesService,
-    public route: ActivatedRoute
-  ) {
-  }
-
-  ngOnInit() {
-    //this.quizzesService.getQuizzes();
-  }
+export class QuizComponent  {
+  constructor( public quizzesService: QuizzesService, private router: Router ) {console.log('init constr')}
 }

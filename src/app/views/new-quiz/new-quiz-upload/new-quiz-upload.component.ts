@@ -109,7 +109,8 @@ export class NewQuizUploadComponent {
         answerA: { answer: this.quizNotCorrectAnswers[i * 3], correctAnswer: false },
         answerB: { answer: this.quizNotCorrectAnswers[i * 3 + 1], correctAnswer: false }, 
         answerC: { answer: this.quizNotCorrectAnswers[i * 3 + 2], correctAnswer: false }, 
-        answerD: { answer: this.quizCorrectAnswers[i], correctAnswer: true } 
+        answerD: { answer: this.quizCorrectAnswers[i], correctAnswer: true },
+        selectedAnswer: ""
       };
       
       this.quizData.quizQuestionDTOs.push(question);
