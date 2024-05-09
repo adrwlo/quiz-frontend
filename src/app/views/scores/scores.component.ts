@@ -20,13 +20,16 @@ export class ScoresComponent implements OnInit {
     this.quizService.getRatings().subscribe((data) => {
       this.ratings = data;
       this.filteredRatings = data;
-      console.log(data);
     });
   }
 
   filter(event: any): void {
     const value = event.target.value;
-    console.log(event.target.value);
-    //this.filteredRatings = this.ratings.filter()
+   
+    this.filteredRatings = this.ratings.filter((rating) => {
+      return (
+        rating.quizTitle.toLowerCase().includes(value)
+      );
+    });
   }
 }
