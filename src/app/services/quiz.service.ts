@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { QuizData } from '../models/QuizData';
-import { Rating } from '../models/Rating';
+import { RatingAdd } from '../models/RatingAdd';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +26,9 @@ export class QuizService {
 
   getRatings(): Observable<any> {
     return this.http.get(`${this.baseUrl}/api/getRatings`);
+  }
+
+  addRating(rating: RatingAdd): Observable<any> {
+    return this.http.post(`${this.baseUrl}/api/addRating`, rating);
   }
 }
