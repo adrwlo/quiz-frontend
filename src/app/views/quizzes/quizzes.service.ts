@@ -39,23 +39,15 @@ export class QuizzesService  {
       this.chosenQuiz = filteredQuiz;
       this.chosenQuiz.quizQuestionDTOs.forEach(quiz => quiz.selectedAnswer = "");
 
-      console.log(this.chosenQuiz);
-
       if(this.chosenQuiz.isShuffledQuestions) {
         this.shuffleQuestions();
       }
 
       if (this.chosenQuiz.isShuffledAnswers) {
-        console.log('before');
-        console.log(this.chosenQuiz.quizQuestionDTOs);
         this.shuffleAllAnswers();
-        console.log('after');
-        console.log(this.chosenQuiz.quizQuestionDTOs);
       }
 
-    } else {
-      console.log(`Quiz o id ${id} nie został znaleziony.`);
-    }
+    } 
 
     this.quizId = id;
     this.router.navigate(['quiz']);

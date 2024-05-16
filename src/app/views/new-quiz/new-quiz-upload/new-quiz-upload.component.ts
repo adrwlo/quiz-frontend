@@ -122,11 +122,9 @@ export class NewQuizUploadComponent {
     this.quizService.addQuiz(this.quizData).subscribe(
       (response) => {
         this.toastService.showSuccessToast('Quiz has been successfully added.');
-        console.log(response);
       },
       (error) => {
         this.toastService.showErrorToast('An error occurred while adding the quiz.');
-        console.log(error);
       })
   }
   
