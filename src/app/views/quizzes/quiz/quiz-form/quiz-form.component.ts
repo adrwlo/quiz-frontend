@@ -4,16 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-quiz-form',
-  standalone: true,
-  imports: [FormsModule, CommonModule],
-  templateUrl: './quiz-form.component.html',
-  styleUrl: './quiz-form.component.scss'
+    selector: 'app-quiz-form',
+    standalone: true,
+    templateUrl: './quiz-form.component.html',
+    styleUrl: './quiz-form.component.scss',
+    imports: [FormsModule, CommonModule]
 })
 export class QuizFormComponent {
   constructor( public quizzesService: QuizzesService ) {}
-
-  chosenTest() {
-    console.log(this.quizzesService.chosenQuiz);
-  }
 }
