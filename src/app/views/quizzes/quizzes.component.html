@@ -1,24 +1,25 @@
 <div class="container mt-5">
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="col" *ngFor="let quiz of this.quizzesService.quizzes">
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div class="col" *ngFor="let quiz of quizzesService.quizzes; let i = index">
           <div class="card">
-            <h2 class="card-header">{{ quiz.title }}</h2>
-            <div class="card-body w-100">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    Shuffle questions
-                </label>
+              <h2 class="card-header">{{ quiz.title }}</h2>
+              <div class="card-body w-100">
+                  <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="shuffleQuestions{{ i }}" [(ngModel)]="quiz.isShuffledQuestions">
+                      <label class="form-check-label" for="shuffleQuestions{{ i }}">
+                          Shuffle questions
+                      </label>
+                  </div>
+                  <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="shuffleAnswers{{ i }}" [(ngModel)]="quiz.isShuffledAnswers">
+                      <label class="form-check-label" for="shuffleAnswers{{ i }}">
+                          Shuffle answers
+                      </label>
+                  </div>
+                  <button type="button" class="btn btn-success mt-3" style="width: 100px;" (click)="quizzesService.startQuiz(quiz.id!)">Start</button>
               </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                <label class="form-check-label" for="flexCheckChecked">
-                    Shuffle answers
-                </label>
-              </div>
-              <button type="button" class="btn btn-success mt-3" style="width: 100px;" (click)="this.quizzesService.startQuiz(quiz.id!)">Start</button>
-            </div>
           </div>
-        </div>
-    </div>
+      </div>
+  </div>
 </div>
+
