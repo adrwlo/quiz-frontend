@@ -7,3 +7,16 @@
       <app-quiz-info></app-quiz-info>
     </div>
 </div>
+
+<app-modal 
+  [modalTitle]="'Accept changes'" 
+  [modalMessage]="'Do you want to accept your changes?'"
+  (saveChanges)="this.quizzesService.submit()"
+></app-modal>
+
+<app-toast></app-toast>
+
+
+
+
+

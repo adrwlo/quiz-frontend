@@ -3,15 +3,22 @@ import { QuizzesService } from '../quizzes.service';
 import { CommonModule } from '@angular/common';
 import { QuizFormComponent } from './quiz-form/quiz-form.component';
 import { QuizInfoComponent } from './quiz-info/quiz-info.component';
-import { Router } from '@angular/router';
+import { ModalComponent } from '../../../components/modal/modal.component';
+import { ToastComponent } from '../../../components/toast/toast.component';
 
 @Component({
   selector: 'app-quiz',
   standalone: true,
-  imports: [CommonModule, QuizFormComponent, QuizInfoComponent],
+  imports: [
+    CommonModule, 
+    QuizFormComponent, 
+    QuizInfoComponent, 
+    ModalComponent,
+    ToastComponent
+  ],
   templateUrl: './quiz.component.html',
   styleUrl: './quiz.component.scss'
 })
 export class QuizComponent  {
-  constructor( public quizzesService: QuizzesService, private router: Router ) {console.log('init constr')}
+  constructor( public quizzesService: QuizzesService ) {}
 }
