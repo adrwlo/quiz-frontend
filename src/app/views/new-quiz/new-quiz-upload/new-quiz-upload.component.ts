@@ -1,8 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { QuizData } from '../../../models/QuizData';
 import { QuizQuestion } from '../../../models/QuizQuestion';
 import { CommonModule } from '@angular/common';
 import { QuizService } from '../../../services/quiz.service';
+import { ToastService } from '../../../components/toast/toast.service';
 import { ToastComponent } from '../../../components/toast/toast.component';
 
 interface MessageInfo {
@@ -32,9 +33,7 @@ export class NewQuizUploadComponent {
 
   quizData!: QuizData;
 
-  @ViewChild(ToastComponent) toastComponent!: ToastComponent;
-
-  constructor(private quizService: QuizService) {}
+  constructor(private quizService: QuizService, private toastService: ToastService) {}
 
   uploadFileTxt(event: any) {
     const file = event.target.files[0];
@@ -100,7 +99,9 @@ export class NewQuizUploadComponent {
   mergeParsedQuiz(): void {
     this.quizData = { 
       title: this.quizTitles[0], 
-      quizQuestionDTOs: []
+      quizQuestionDTOs: [],
+      isShuffledQuestions: false,
+      isShuffledAnswers: false
     };
   
     for (let i = 0; i < this.quizQuestions.length; i++) {
@@ -120,17 +121,13 @@ export class NewQuizUploadComponent {
   saveQuizData() {
     this.quizService.addQuiz(this.quizData).subscribe(
       (response) => {
-        this.toastComponent.toastType = 'Success';
-        this.toastComponent.toastMessage = 'Quiz has been successfully added.';
+        this.toastService.showSuccessToast('Quiz has been successfully added.');
         console.log(response);
       },
       (error) => {
-        this.toastComponent.toastType = 'Error';
-        this.toastComponent.toastMessage = 'An error occurred while adding the quiz.';
+        this.toastService.showErrorToast('An error occurred while adding the quiz.');
         console.log(error);
       })
-
-      this.toastComponent.showToast();
   }
   
   downloadExampleQuizTxt() {
@@ -152,6 +149,4 @@ export class NewQuizUploadComponent {
 
     xhr.send();
   }
-
-
 }
