@@ -18,9 +18,11 @@ export class QuizzesService  {
     isShuffledQuestions: false,
     isShuffledAnswers: false
   };
+  ratingRequestBody: any;
   step: number = 1;
   quizId!: number;
   answerWarning: boolean = false;
+  completionMode: boolean = false;
 
   constructor(
     private quizService: QuizService,
@@ -111,17 +113,18 @@ export class QuizzesService  {
   }
 
   submit() {
-    const ratingRequestBody = {
+    this.ratingRequestBody = {
       quizId: this.chosenQuiz.id!,
       quizTitle: this.chosenQuiz.title,
       maxPoints: this.chosenQuiz.quizQuestionDTOs.length,
       rating: this.calculateRating()
     };
-  
-    this.quizService.addRating(ratingRequestBody).subscribe(
+
+    this.quizService.addRating(this.ratingRequestBody).subscribe(
       () => {
         this.toastService.showSuccessToast('The quiz has been successfully submitted.');
         this.modalService.hideModal();
+        this.completionMode = true;
       },
       (error) => {
         this.toastService.showErrorToast('An error occurred while submitting the quiz.');
@@ -172,7 +175,14 @@ export class QuizzesService  {
       isShuffledQuestions: false,
       isShuffledAnswers: false
     };
+    this.ratingRequestBody = {
+      quizId: null,
+      quizTitle: null,
+      maxPoints: null,
+      rating: null
+    };
     this.chosenQuiz.quizQuestionDTOs.forEach(quiz => quiz.selectedAnswer = "");
+    this.completionMode = false;
     this.step = 1;
   }
 }

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="!this.quizzesService.completionMode">
   <div class="row">
     <div class="col-9">
       <app-quiz-form></app-quiz-form>
@@ -6,6 +6,11 @@
     <div class="col-3">
       <app-quiz-info></app-quiz-info>
     </div>
+  </div>
+</div>
+
+<div class="container mt-5" *ngIf="this.quizzesService.completionMode">
+  <app-quiz-complete></app-quiz-complete>
 </div>
 
 <app-modal 

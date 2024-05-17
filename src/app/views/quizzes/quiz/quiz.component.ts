@@ -5,6 +5,7 @@ import { QuizFormComponent } from './quiz-form/quiz-form.component';
 import { QuizInfoComponent } from './quiz-info/quiz-info.component';
 import { ModalComponent } from '../../../components/modal/modal.component';
 import { ToastComponent } from '../../../components/toast/toast.component';
+import { QuizCompleteComponent } from './quiz-complete/quiz-complete.component';
 
 @Component({
   selector: 'app-quiz',
@@ -12,7 +13,8 @@ import { ToastComponent } from '../../../components/toast/toast.component';
   imports: [
     CommonModule, 
     QuizFormComponent, 
-    QuizInfoComponent, 
+    QuizInfoComponent,
+    QuizCompleteComponent, 
     ModalComponent,
     ToastComponent
   ],
