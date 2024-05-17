@@ -21,7 +21,7 @@
             <td>{{rating.quizTitle}}</td>
             <td>{{rating.maxPoints}}</td>
             <td>{{rating.rating}}</td>
-            <td>{{rating.dateTime}}</td>
+            <td>{{rating.dateTime.toString() | DateTimeFormatPipe}}</td>
           </tr>
         </tbody>
       </table>

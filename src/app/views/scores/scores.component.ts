@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../../services/quiz.service';
 import { Rating } from '../../models/Rating';
 import { CommonModule } from '@angular/common';
+import { DateTimeFormatPipe } from '../../pipes/date-time-format.pipe';
 
 @Component({
   selector: 'app-scores',
   standalone: true,
   imports: [CommonModule],
+  providers: [DateTimeFormatPipe],
   templateUrl: './scores.component.html',
-  styleUrl: './scores.component.scss'
+  styleUrl: './scores.component.scss',
 })
 export class ScoresComponent implements OnInit {
   ratings: Rating[] = [];
