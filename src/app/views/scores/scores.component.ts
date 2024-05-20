@@ -7,8 +7,7 @@ import { DateTimeFormatPipe } from '../../pipes/date-time-format.pipe';
 @Component({
   selector: 'app-scores',
   standalone: true,
-  imports: [CommonModule],
-  providers: [DateTimeFormatPipe],
+  imports: [CommonModule, DateTimeFormatPipe],
   templateUrl: './scores.component.html',
   styleUrl: './scores.component.scss',
 })
