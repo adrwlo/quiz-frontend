@@ -16,6 +16,6 @@ export class DateTimeFormatPipe implements PipeTransform {
       second: '2-digit'
     };
 
-    return date.toLocaleString('en-US', options);
+    return date.toLocaleString('en-GB', options);
   }
 }
