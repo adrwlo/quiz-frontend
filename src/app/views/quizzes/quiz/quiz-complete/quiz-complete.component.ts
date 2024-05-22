@@ -15,7 +15,6 @@ export class QuizCompleteComponent {
   constructor(public quizzesService: QuizzesService, private route: Router) {}
 
   protected goToScores() {
-    this.quizzesService.setDefaultValues();
     this.route.navigate(['scores']);
   }
 }
