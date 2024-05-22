@@ -24,7 +24,7 @@ export class ScoresComponent implements OnInit {
 
   ngOnInit(): void {
     this.quizService.getRatings().subscribe((data) => {
-      this.ratings = data;
+      this.ratings = data.sort((a: any, b: any) => new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime());
       this.filteredRatings = this.ratings; 
       this.totalItems = this.ratings.length;
       this.updatePage();
