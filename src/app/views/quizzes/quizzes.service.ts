@@ -50,7 +50,6 @@ export class QuizzesService  {
       if (this.chosenQuiz.isShuffledAnswers) {
         this.shuffleAllAnswers();
       }
-
     } 
 
     this.quizId = id;
@@ -84,7 +83,7 @@ export class QuizzesService  {
         [newArray[i], newArray[j]] = [newArray[j], newArray[i]]; 
     }
     return newArray;
-}
+  }
 
   next() {
     if (this.step <= this.chosenQuiz.quizQuestionDTOs.length) {
@@ -101,9 +100,6 @@ export class QuizzesService  {
     } else {
       return;
     }
-  }
-
-  cancel() {
   }
 
   openModal() {
