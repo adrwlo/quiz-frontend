@@ -29,7 +29,9 @@ export class QuizzesService  {
     private router: Router,
     private modalService: ModalService,
     private toastService: ToastService
-  ) {
+  ) {}
+
+  getQuizzes() {
     this.quizService.getQuizzes().subscribe((quizzes: QuizData[]) => {
       this.quizzes = quizzes;
     })
