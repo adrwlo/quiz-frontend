@@ -1,0 +1,21 @@
+.pagination .page-item .page-link {
+    color: black; 
+  }
+  
+  .pagination .page-item.active .page-link {
+    background-color: rgba(var(--bs-emphasis-color-rgb), 0.1); 
+    border-color: rgba(var(--bs-emphasis-color-rgb), 0.1); 
+  }
+  
+  .pagination .page-item.disabled .page-link {
+    color: black; 
+  }
+  
+  .pagination .page-item .page-link:hover {
+    color: rgba(var(--bs-emphasis-color-rgb), 0.1); 
+  }
+  
+  .pagination .page-item.active .page-link:hover {
+    color: black; 
+  }
+  
