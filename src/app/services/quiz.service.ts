@@ -13,22 +13,22 @@ export class QuizService {
   constructor(private http: HttpClient) { }
 
   getQuizzes(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/api/getQuizzes`);
+    return this.http.get(`${this.baseUrl}/api/quizzes`);
   }
 
   addQuiz(quiz: QuizData): Observable<QuizData> {
-    return this.http.post<QuizData>(`${this.baseUrl}/api/addQuiz`, quiz);
+    return this.http.post<QuizData>(`${this.baseUrl}/api/quiz`, quiz);
   }
 
   deleteQuiz(title: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/api/deleteQuiz/${title}`);
+    return this.http.delete(`${this.baseUrl}/api/delete/${title}`);
   }
 
   getRatings(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/api/getRatings`);
+    return this.http.get(`${this.baseUrl}/api/ratings`);
   }
 
   addRating(rating: RatingAdd): Observable<any> {
-    return this.http.post(`${this.baseUrl}/api/addRating`, rating);
+    return this.http.post(`${this.baseUrl}/api/rating`, rating);
   }
 }
